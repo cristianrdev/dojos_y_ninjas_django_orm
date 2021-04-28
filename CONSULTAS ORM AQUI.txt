@@ -72,6 +72,8 @@ Dejando por defecto un "dojo_antiguo".
 
 Crear un nuevo dojo
 
+Dojos.objects.create(name= "Dallas Campus", city = "Dallas", state = "TX", description= "last dojo created")
+
 
 
 
