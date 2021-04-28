@@ -1,0 +1,77 @@
+Ejecutar shell:
+$ python manage.py shell
+
+
+Importar los modelos:
+from app_dojo_ninja.models import *
+
+Crea 3 nuevos dojos
+Dojos.objects.create(name= "Burbank Campus", city = "Los Angeles", state = "CA")
+Dojos.objects.create(name= "Chicago Campus", city = "Chicago", state = "IL")
+Dojos.objects.create(name= "Silicon Valley Campus", city = "San Jose", state = "CA")
+
+Borrar los tres Dojos
+dojo_delete = Dojos.objects.get(id=1)
+dojo_delete.delete()
+
+dojo_delete = Dojos.objects.get(id=2)
+dojo_delete.delete()
+
+dojo_delete = Dojos.objects.get(id=3)
+dojo_delete.delete()
+
+Crear 3 ninjas en el primer Dojo
+this_dojo = Dojos.objects.get(id=4)
+new_ninja = Ninjas.objects.create(first_name = "Javier", last_name= "Gonzalez", dojo = this_dojo)
+new_ninja = Ninjas.objects.create(first_name = "Marcela", last_name= "Olivares", dojo = this_dojo)
+new_ninja = Ninjas.objects.create(first_name = "Francisca", last_name= "Rojas", dojo = this_dojo)
+
+Crear 3 ninjas en el segundo Dojo
+this_dojo2 = Dojos.objects.get(id=5)
+new_ninja = Ninjas.objects.create(first_name = "Marcelo", last_name= "Rojas", dojo = this_dojo2)
+new_ninja = Ninjas.objects.create(first_name = "Carlos", last_name= "Maurel", dojo = this_dojo2)
+new_ninja = Ninjas.objects.create(first_name = "Julieta", last_name= "Martinez", dojo = this_dojo2)
+
+Crear 3 ninjas en el tercer Dojo
+this_dojo3 = Dojos.objects.get(id=6)
+new_ninja = Ninjas.objects.create(first_name = "Maricela", last_name= "Castillo", dojo = this_dojo3)
+new_ninja = Ninjas.objects.create(first_name = "Tatiana", last_name= "Galves", dojo = this_dojo3)
+new_ninja = Ninjas.objects.create(first_name = "Josefina", last_name= "Rojas", dojo = this_dojo3)
+
+Recupera todos los ninjas del primer Dojo
+>>> for n in this_dojo.dojo_ninja.all():
+...     print(n.first_name , n.last_name)
+...
+Javier Gonzalez
+Marcela Olivares
+Francisca Rojas
+
+
+Recupera todos los ninjas del ultimo Dojo
+>>> for n in this_dojo3.dojo_ninja.all():
+...     print(n.first_name , n.last_name)
+...
+Maricela Castillo
+Tatiana Galves
+Josefina Rojas
+
+recupera el último dojo del ninja???
+
+Agrega un nuevo campo de texto llamado "desc" a su clase de Dojo:
+en models.py en la clase Dojos, se agregó un nuevo campo (*) de la siguiente manera:
+
+class Dojos(models.Model):
+    name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=2)
+    description = models.CharField(default = "dojo antiguo" , max_length=255) *
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+Dejando por defecto un "dojo_antiguo".
+
+Crear un nuevo dojo
+
+
+
+
